@@ -51,10 +51,24 @@ class _PageDetailCountriesState extends State<PageDetailCountries> {
     );
   }
   Widget _buildSuccessSection(CountriesModel data) {
-    return ListView.builder(
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 100,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+      ),
       itemCount: data.countries?.length,
       itemBuilder: (BuildContext context, int index) {
-        return _buildItemCountries("${data.countries?[index].name}");
+        return Container(
+          color: Colors.blueGrey,
+          child: Center(
+            child: Text(
+              "${data.countries?[index].name}\n\n\n${data.countries?[index].iso3}",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        );
       },
     );
   }
